@@ -1,0 +1,17 @@
+# Los libros NO se versionan: son obra ajena. El harness los lee de aqui, pero lo
+# que se publica son fichas con su cita corta y su pagina, nunca el texto entero.
+corpus/
+
+# Resultados: viven en el repo del proyecto (jasper-yoga/harness_cards.json).
+fichas/
+cola/
+logs/
+descartadas_paratexto.json
+harness_cards.json
+harness_cards.json.bak*
+
+# Copias de seguridad y cache
+*.bak
+*.bak-*
+__pycache__/
+*.pyc
