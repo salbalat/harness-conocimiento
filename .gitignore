@@ -15,3 +15,6 @@ harness_cards.json.bak*
 *.bak-*
 __pycache__/
 *.pyc
+
+# La direccion del Ollama de cada maquina
+.ollama-url

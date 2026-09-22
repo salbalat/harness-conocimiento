@@ -20,8 +20,9 @@ logs/             traza de cada pasada
 
 ## Modelos (comprobado el 20-09-2026)
 
-Ollama corre en el **Windows anfitrión**, y desde WSL se llega por **172.22.64.1:11434**
-— NO por 192.168.0.10, que era lo que había apuntado y no responde. El
+Ollama corre en el **Windows anfitrión**, y desde WSL se llega por la IP del anfitrión
+(la que sale en `/etc/resolv.conf`), NO por la IP de la LAN, que no responde.
+Se configura con la variable `OLLAMA_URL`. El
 `ollama_proxy.py` de `~/herramientas/` ya se autodetecta el gateway.
 
 Hay **19 modelos**. En uso:

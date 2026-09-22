@@ -16,7 +16,7 @@ Uso:
   python3 harness.py                        # las 502
   python3 harness.py --solo-libro hatha     # un libro concreto
 """
-import argparse, hashlib, json, re, sys, time, unicodedata, urllib.error, urllib.request
+import argparse, hashlib, json, os, re, sys, time, unicodedata, urllib.error, urllib.request
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent
@@ -25,7 +25,12 @@ FICHAS = RAIZ / "fichas"
 COLA = RAIZ / "cola"
 LOGS = RAIZ / "logs"
 
-OLLAMA = "http://172.22.64.1:11434"
+# Donde escucha Ollama. Orden: variable OLLAMA_URL, fichero .ollama-url, localhost.
+# defecto es localhost; en esta maquina la direccion real vive en .ollama-url,
+_url_local = RAIZ / ".ollama-url"      # fichero de cada maquina, fuera del repo
+OLLAMA = (os.environ.get("OLLAMA_URL")
+          or (_url_local.read_text(encoding="utf-8").strip() if _url_local.exists() else None)
+          or "http://127.0.0.1:11434")
 MODELO_PROPONEDOR = "qwen2.5:14b"
 MODELO_CRIBADOR = "mistral-small:24b"   # distinto de A: si fuera el mismo, se daría la razón
 
